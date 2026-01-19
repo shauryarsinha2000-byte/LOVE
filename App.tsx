@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import FloatingHearts from './components/FloatingHearts';
 import SuccessView from './components/SuccessView';
-import { generateCutePhrases } from './services/geminiService';
 import { FALLBACK_PHRASES } from './types';
 
 // Gifs
@@ -21,23 +20,9 @@ const Footer = () => (
 const App: React.FC = () => {
   const [hasSaidYes, setHasSaidYes] = useState(false);
   const [noCount, setNoCount] = useState(0);
-  // Initialize with fallback phrases so something is available immediately
-  const [aiPhrases, setAiPhrases] = useState<string[]>(FALLBACK_PHRASES);
-
-  useEffect(() => {
-    const loadPhrases = async () => {
-      try {
-        const generatedPhrases = await generateCutePhrases();
-        if (generatedPhrases && generatedPhrases.length > 0) {
-          // Add generated phrases to the rotation
-          setAiPhrases(prev => [...prev, ...generatedPhrases]);
-        }
-      } catch (e) {
-        console.error("Using fallback phrases due to error");
-      }
-    };
-    loadPhrases();
-  }, []);
+  
+  // Use fallback phrases directly
+  const phrases = FALLBACK_PHRASES;
 
   const handleNoClick = () => {
     setNoCount(prev => prev + 1);
@@ -67,8 +52,8 @@ const App: React.FC = () => {
 
   // Select phrase based on count
   // We offset by 1 because count starts at 0 (no phrase needed initially)
-  const phraseIndex = (noCount - 1) % aiPhrases.length;
-  const currentPhrase = noCount === 0 ? "" : aiPhrases[phraseIndex];
+  const phraseIndex = (noCount - 1) % phrases.length;
+  const currentPhrase = noCount === 0 ? "" : phrases[phraseIndex];
 
   const currentGif = noCount === 0 ? INITIAL_GIF : SAD_GIF;
 

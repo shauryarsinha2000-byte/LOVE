@@ -1,20 +1,22 @@
-export interface ValentineState {
-  hasSaidYes: boolean;
-  noCount: number;
-  currentPhraseIndex: number;
-  isLoadingAI: boolean;
-  aiPhrases: string[];
-}
-
 export const FALLBACK_PHRASES = [
-  "Pretty please?",
-  "Don't break my heart!",
-  "I'll be so sad...",
-  "Think about the cuddles!",
-  "Just one chance?",
-  "But we are perfect!",
-  "Look at this cute face!",
-  "Give me a shot!",
-  "My heart is aching!",
-  "Don't do this to me!"
+  "Pretty please with a cherry? 🍒",
+  "Don't break my heart! 💔",
+  "I'll be so sad... 🥺",
+  "But I love you so much! 💖",
+  "I'm gonna cry... 😭",
+  "You're my favorite person! 🌟",
+  "Please say yes, cutie! 🥺",
+  "I promise to be good! 😇",
+  "Don't be mean to me! 😢",
+  "My heart needs you! ❤️",
+  "Just one chance? 🙏",
+  "Look at this puppy face! 🐶",
+  "But we are soulmates! 💑",
+  "I'll give you cookies! 🍪",
+  "You are my sunshine! ☀️",
+  "Don't let me go! 🏃‍♂️",
+  "I'll love you forever! ♾️",
+  "Be my player 2? 🎮",
+  "We'd be so cute together! 🥰",
+  "Please please please! 🥺"
 ];
